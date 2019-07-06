@@ -28,11 +28,15 @@ foreach (file ${buildFiles})
    endif()
 endforeach(file)
 
+#set (helloPackagePath "C:/Users/saitama/.conan/data/Hello/0.1/demo/testing/package/6cc50b139b9c3d27b3e9042d5f5372d327b3a9f7")
+#set (helloH ${helloPackagePath}/include/hello.h)
+#set (helloLib ${helloPackagePath}/lib/hello.lib)
+
 add_executable             (Project ${projectFilesInclude} ${projectFilesSource})
 target_include_directories (Project PUBLIC ${projectIncludePaths})
 target_link_libraries      (Project ${CONAN_LIBS})
 
-add_library                (projectLib ${projectFilesInclude} ${projectFilesSource} ${CONAN_LIBS})
+add_library                (projectLib ${projectFilesInclude} ${projectFilesSource})
 
 link_directories           (Test ${buildPath}/lib)
 add_executable             (Test ${testFilesInclude} ${testFilesSource})
