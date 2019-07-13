@@ -26,26 +26,11 @@ class HelloConan(ConanFile):
 
     def build (self):
         trunkPath = os.getcwd().replace("\conan",'')
-        #cmakePath = trunkPath + "/Packages/PackageTemplate"
-        cmakePath = trunkPath
+        cmakePath = trunkPath + "/Packages/PackageTemplate"
         buildPath = cmakePath + "/build"
         cmake     = CMake(self)
         cmake.configure(source_dir=cmakePath, build_dir=buildPath)
         cmake.build()
-    
-    #def build (self):
-    #    print("jestem tutaj!!!!!!!!!!!!!!!")
-    #    print(self.build_dir)
-    #    cmake = CMake(self)
-        # Current dir is "test_package/build/<build_id>" and CMakeLists.txt is
-        # in "test_package"
-    #    cmake.configure()
-    #    cmake.build()
-
-        # Explicit way:
-        # self.run('cmake %s/hello %s'
-        #          % (self.source_folder, cmake.command_line))
-        # self.run("cmake --build . %s" % cmake.build_config)
 
     def package(self):
         self.copy("*.h", dst="include", src="src")
