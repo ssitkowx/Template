@@ -1,4 +1,4 @@
-project (Template)
+PROJECT (PackageTemplate)
 cmake_minimum_required (VERSION 2.8.12)
 
 add_definitions ("-std=c++11")
@@ -7,6 +7,7 @@ set  (trunkPath ${CMAKE_CURRENT_SOURCE_DIR})
 set  (conanPath ${trunkPath}/conan)
 set  (buildPath ${trunkPath}/build)
 file (COPY ${conanPath}/conanbuildinfo.cmake DESTINATION ${trunkPath}/build)
+#file (COPY "C:/Users/saitama/.conan/data/packageTemplate/0.1/demo/testing/build/6cc50b139b9c3d27b3e9042d5f5372d327b3a9f7/conanbuildinfo.cmake" DESTINATION ${trunkPath}/build)
 
 include (${buildPath}/conanbuildinfo.cmake)
 conan_basic_setup()
@@ -27,10 +28,6 @@ foreach (file ${buildFiles})
       file(REMOVE ${file})
    endif()
 endforeach(file)
-
-#set (helloPackagePath "C:/Users/saitama/.conan/data/Hello/0.1/demo/testing/package/6cc50b139b9c3d27b3e9042d5f5372d327b3a9f7")
-#set (helloH ${helloPackagePath}/include/hello.h)
-#set (helloLib ${helloPackagePath}/lib/hello.lib)
 
 add_executable             (Project ${projectFilesInclude} ${projectFilesSource})
 target_include_directories (Project PUBLIC ${projectIncludePaths})

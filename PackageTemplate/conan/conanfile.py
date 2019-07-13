@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake
+from conans import ConanFile, CMake, tools
 import os
 
 class HelloConan(ConanFile):
@@ -14,20 +14,33 @@ class HelloConan(ConanFile):
     exports_sources = "src/*"
     
     def source(self):
-        self.run("git clone https://github.com/memsharded/hello.git")
-        self.run("cd hello && git checkout static_shared")
+        self.run("git clone git@github.com:ssitkowx/Packages.git")
+        #self.run("cd Packages/PackageTemplate")
         # This small hack might be useful to guarantee proper /MT /MD linkage
         # in MSVC if the packaged project doesn't have variables to set it
         # properly
-        #tools.replace_in_file("hello/CMakeLists.txt", "PROJECT(MyHello)",
+        #tools.replace_in_file("Packages/PackageTemplate/CMakeLists.txt", "PROJECT (PackageTemplate)",
+        #   '''PROJECT(PackageTemplate)
+        #      include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+        #      conan_basic_setup()''')
 
     def build (self):
         trunkPath = os.getcwd().replace("\conan",'')
+        #cmakePath = trunkPath + "/Packages/PackageTemplate"
         cmakePath = trunkPath
-        buildPath = trunkPath + "/build"
+        buildPath = cmakePath + "/build"
         cmake     = CMake(self)
         cmake.configure(source_dir=cmakePath, build_dir=buildPath)
         cmake.build()
+    
+    #def build (self):
+    #    print("jestem tutaj!!!!!!!!!!!!!!!")
+    #    print(self.build_dir)
+    #    cmake = CMake(self)
+        # Current dir is "test_package/build/<build_id>" and CMakeLists.txt is
+        # in "test_package"
+    #    cmake.configure()
+    #    cmake.build()
 
         # Explicit way:
         # self.run('cmake %s/hello %s'
