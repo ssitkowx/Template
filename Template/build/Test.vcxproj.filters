@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\saitama\Desktop\Projekty\GIT\Packages\Template\Test\source\main.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\saitama\Desktop\Projekty\GIT\Packages\Template\Test\source\template.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\saitama\Desktop\Projekty\GIT\Packages\Template\Test\include\template.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\saitama\Desktop\Projekty\GIT\Packages\Template\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{EE73F11C-931A-3D4D-83B5-AA6D863B9154}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9E4D560A-F787-39B7-A38A-50083708B573}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
