@@ -3,21 +3,21 @@ cmake_minimum_required (VERSION 2.8.12)
 
 add_definitions ("-std=c++11")
 
-set  (trunkPath ${CMAKE_CURRENT_SOURCE_DIR})
-set  (conanPath ${trunkPath}/conan)
-set  (buildPath ${trunkPath}/build)
-file (COPY ${conanPath}/conanbuildinfo.cmake DESTINATION ${trunkPath}/build)
+set  (cmakePath ${CMAKE_CURRENT_SOURCE_DIR})
+set  (conanPath ${cmakePath}/conan)
+set  (buildPath ${cmakePath}/build)
+file (COPY ${conanPath}/conanbuildinfo.cmake DESTINATION ${cmakePath}/build)
 
 include (${buildPath}/conanbuildinfo.cmake)
 conan_basic_setup()
 
-set  (projectIncludePaths       ${trunkPath}/Project/include)
-set  (projectSourcePaths        ${trunkPath}/Project/source)
+set  (projectIncludePaths       ${cmakePath}/Project/include)
+set  (projectSourcePaths        ${cmakePath}/Project/source)
 file (GLOB projectFilesInclude  ${projectIncludePaths}/*.h  ${projectIncludePaths}/*.hxx)
 file (GLOB projectFilesSource   ${projectSourcePaths}/*.cpp ${projectSourcePaths}/*.cxx)
 
-set  (testIncludePaths       ${trunkPath}/Test/include)
-set  (testSourcePaths        ${trunkPath}/Test/source)
+set  (testIncludePaths       ${cmakePath}/Test/include)
+set  (testSourcePaths        ${cmakePath}/Test/source)
 file (GLOB testFilesInclude  ${testIncludePaths}/*.h  ${testIncludePaths}/*.hxx)
 file (GLOB testFilesSource   ${testSourcePaths}/*.cpp ${testSourcePaths}/*.cxx)
 

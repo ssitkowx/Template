@@ -26,8 +26,8 @@ class HelloConan(ConanFile):
         #      conan_basic_setup()''')
 
     def build (self):
-        trunkPath = os.getcwd().replace("\conan",'')
-        cmakePath = trunkPath
+        #cmakePath = os.getcwd().replace("\conan",'')
+        cmakePath = os.getcwd() + "\PackageTemplate"
         buildPath = cmakePath + "/build"
         cmake     = CMake(self)
         cmake.configure(source_dir=cmakePath, build_dir=buildPath)
@@ -42,4 +42,4 @@ class HelloConan(ConanFile):
         self.copy("*.a", dst="lib", keep_path=False)
 
     #def package_info(self):
-        #self.cpp_info.libs = ["hello"]
+        #self.cpp_info.libs = ["PackageTemplate"]
