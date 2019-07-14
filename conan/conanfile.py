@@ -27,7 +27,7 @@ class HelloConan(ConanFile):
 
     def build (self):
         #cmakePath = os.getcwd().replace("\conan",'')
-        cmakePath = os.getcwd() + "\PackageTemplate"
+        cmakePath = os.getcwd() + "/PackageTemplate"
         buildPath = cmakePath + "/build"
         cmake     = CMake(self)
         cmake.configure(source_dir=cmakePath, build_dir=buildPath)
