@@ -3,6 +3,12 @@ cmake_minimum_required (VERSION 2.8.12)
 
 add_definitions ("-std=c++11")
 
+message("AAAAAAAAAAAAAAA!!!!!!!!!!")
+message(${CMAKE_SOURCE_DIR})
+message(${CMAKE_BINARY_DIR})
+message(${CMAKE_CURRENT_SOURCE_DIR})
+message(${CMAKE_CURRENT_BINARY_DIR})
+
 set  (cmakePath ${CMAKE_CURRENT_SOURCE_DIR})
 set  (conanPath ${cmakePath}/conan)
 set  (buildPath ${cmakePath}/build)

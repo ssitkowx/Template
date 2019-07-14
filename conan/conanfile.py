@@ -11,7 +11,7 @@ class HelloConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=False"
     generators = "cmake"
-    exports_sources = "src/*"
+    exports_sources = "source/*"
     
     def source(self):
         self.run("git clone git@github.com:ssitkowx/PackageTemplate.git")
@@ -27,7 +27,7 @@ class HelloConan(ConanFile):
 
     def build (self):
         #cmakePath = os.getcwd().replace("\conan",'')
-        cmakePath = os.getcwd() + "\PackageTemplate"
+        cmakePath = os.getcwd()
         buildPath = cmakePath + "/build"
         cmake     = CMake(self)
         cmake.configure(source_dir=cmakePath, build_dir=buildPath)
