@@ -16,6 +16,7 @@ class HelloConan(ConanFile):
     def source(self):
         self.run("git clone git@github.com:ssitkowx/PackageTemplate.git")
         self.run("cd PackageTemplate//conan")
+        
         # This small hack might be useful to guarantee proper /MT /MD linkage
         # in MSVC if the packaged project doesn't have variables to set it
         # properly
