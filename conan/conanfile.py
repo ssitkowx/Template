@@ -15,7 +15,7 @@ class HelloConan(ConanFile):
     
     def source(self):
         self.run("git clone git@github.com:ssitkowx/PackageTemplate.git")
-        self.run("cd PackageTemplate//conan")
+        self.run("cd conan")
         
         # This small hack might be useful to guarantee proper /MT /MD linkage
         # in MSVC if the packaged project doesn't have variables to set it
@@ -27,7 +27,7 @@ class HelloConan(ConanFile):
 
     def build (self):
         trunkPath = os.getcwd().replace("\conan",'')
-        cmakePath = trunkPath + "/PackageTemplate"
+        cmakePath = trunkPath
         buildPath = cmakePath + "/build"
         cmake     = CMake(self)
         cmake.configure(source_dir=cmakePath, build_dir=buildPath)
