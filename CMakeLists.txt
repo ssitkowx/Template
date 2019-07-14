@@ -3,14 +3,11 @@ cmake_minimum_required (VERSION 2.8.12)
 
 add_definitions ("-std=c++11")
 
-message("AAAAAAAAAAAAAAA!!!!!!!!!!")
-message(${CMAKE_MODULE_PATH})
-message(${CMAKE_ROOT})
-
-set  (cmakePath ${CMAKE_CURRENT_SOURCE_DIR})
-set  (conanPath ${cmakePath}/conan)
-set  (buildPath ${cmakePath}/build)
-file (COPY ${conanPath}/conanbuildinfo.cmake DESTINATION ${cmakePath}/build)
+set  (cmakePath ../${CMAKE_CURRENT_SOURCE_DIR})
+#set  (conanPath ${cmakePath}/conan)
+set  (buildPath ${cmakePath}/PackageTemplate/build)
+#file (COPY ${conanPath}/conanbuildinfo.cmake DESTINATION ${cmakePath}/build)
+file (COPY ${cmakePath}/conanbuildinfo.cmake DESTINATION ${cmakePath}/PackageTemplate/build)
 
 include (${buildPath}/conanbuildinfo.cmake)
 conan_basic_setup()
