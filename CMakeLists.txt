@@ -3,11 +3,9 @@ cmake_minimum_required (VERSION 2.8.12)
 
 add_definitions ("-std=c++11")
 
-set  (cmakePath ../${CMAKE_CURRENT_SOURCE_DIR})
-#set  (conanPath ${cmakePath}/conan)
-set  (buildPath ${cmakePath}/PackageTemplate/build)
-#file (COPY ${conanPath}/conanbuildinfo.cmake DESTINATION ${cmakePath}/build)
-file (COPY ${cmakePath}/conanbuildinfo.cmake DESTINATION ${cmakePath}/PackageTemplate/build)
+set  (cmakePath ${CMAKE_CURRENT_SOURCE_DIR})
+set  (buildPath ${cmakePath}/build)
+file (COPY ${cmakePath}/conan/conanbuildinfo.cmake DESTINATION ${buildPath})
 
 include (${buildPath}/conanbuildinfo.cmake)
 conan_basic_setup()
@@ -33,9 +31,9 @@ add_executable             (Project ${projectFilesInclude} ${projectFilesSource}
 target_include_directories (Project PUBLIC ${projectIncludePaths})
 target_link_libraries      (Project ${CONAN_LIBS})
 
-add_library                (projectLib ${projectFilesInclude} ${projectFilesSource})
-
 link_directories           (Test ${buildPath}/lib)
 add_executable             (Test ${testFilesInclude} ${testFilesSource})
 target_include_directories (Test PUBLIC ${projectIncludePaths} ${testIncludePaths})
 target_link_libraries      (Test ProjectLib ${CONAN_LIBS})
+
+add_library                (projectLib ${projectFilesInclude} ${projectFilesSource})

@@ -26,8 +26,7 @@ class HelloConan(ConanFile):
         #      conan_basic_setup()''')
 
     def build (self):
-        #cmakePath = os.getcwd().replace("\conan",'')
-        cmakePath = os.getcwd() + "/PackageTemplate"
+        cmakePath = os.getcwd().replace("\conan",'')
         buildPath = cmakePath + "/build"
         cmake     = CMake(self)
         cmake.configure(source_dir=cmakePath, build_dir=buildPath)
