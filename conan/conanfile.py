@@ -14,16 +14,8 @@ class HelloConan(ConanFile):
     exports_sources = "source/*"
     
     def source(self):
-        self.run('git clone https://github.com/ssitkowx/PackageTemplate.git')
-        #self.run("cd PackageTemplate/conan")
-        
-        # This small hack might be useful to guarantee proper /MT /MD linkage
-        # in MSVC if the packaged project doesn't have variables to set it
-        # properly
-        #tools.replace_in_file("Packages/PackageTemplate/CMakeLists.txt", "PROJECT (PackageTemplate)",
-        #   '''PROJECT(PackageTemplate)
-        #      include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-        #      conan_basic_setup()''')
+        cloneCmd = 'git clone ' + self.url + '.git'
+        self.run(cloneCmd)
 
     def build(self):
         currentPath = os.getcwd().replace('\conan','')
