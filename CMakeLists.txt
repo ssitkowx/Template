@@ -3,20 +3,20 @@ cmake_minimum_required (VERSION 2.8.12)
 
 add_definitions ("-std=c++11")
 
-set  (cmakePath ${CMAKE_CURRENT_SOURCE_DIR})
-set  (buildPath ${cmakePath}/build)
-file (COPY ${cmakePath}/conan/conanbuildinfo.cmake DESTINATION ${buildPath})
+set  (currentPath ${CMAKE_CURRENT_SOURCE_DIR})
+set  (buildPath ${currentPath}/build)
+file (COPY ${currentPath}/conan/conanbuildinfo.cmake DESTINATION ${buildPath})
 
 include (${buildPath}/conanbuildinfo.cmake)
 conan_basic_setup()
 
-set  (projectIncludePaths       ${cmakePath}/Project/include)
-set  (projectSourcePaths        ${cmakePath}/Project/source)
+set  (projectIncludePaths       ${currentPath}/Project/include)
+set  (projectSourcePaths        ${currentPath}/Project/source)
 file (GLOB projectFilesInclude  ${projectIncludePaths}/*.h  ${projectIncludePaths}/*.hxx)
 file (GLOB projectFilesSource   ${projectSourcePaths}/*.cpp ${projectSourcePaths}/*.cxx)
 
-set  (testIncludePaths          ${cmakePath}/Test/include)
-set  (testSourcePaths           ${cmakePath}/Test/source)
+set  (testIncludePaths          ${currentPath}/Test/include)
+set  (testSourcePaths           ${currentPath}/Test/source)
 file (GLOB testFilesInclude     ${testIncludePaths}/*.h  ${testIncludePaths}/*.hxx)
 file (GLOB testFilesSource      ${testSourcePaths}/*.cpp ${testSourcePaths}/*.cxx)
 

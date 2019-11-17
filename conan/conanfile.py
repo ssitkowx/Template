@@ -14,7 +14,7 @@ class HelloConan(ConanFile):
     exports_sources = "source/*"
     
     def source(self):
-        self.run("git clone git@github.com:ssitkowx/PackageTemplate.git")
+        self.run('git clone https://github.com/ssitkowx/PackageTemplate.git')
         #self.run("cd PackageTemplate/conan")
         
         # This small hack might be useful to guarantee proper /MT /MD linkage
@@ -31,7 +31,7 @@ class HelloConan(ConanFile):
         cmake       = CMake(self)
         cmake.configure(source_dir=currentPath, build_dir=buildPath)
         cmake.build()
-
+        
     def package(self):
         self.copy('*.h'     , dst='include', src='../Project/include', keep_path=False)
         self.copy('*.hxx'   , dst='include', src='../Project/include', keep_path=False)
