@@ -10,30 +10,36 @@ file (COPY ${currentPath}/conan/conanbuildinfo.cmake DESTINATION ${buildPath})
 include (${buildPath}/conanbuildinfo.cmake)
 conan_basic_setup()
 
-set  (projectIncludePaths       ${currentPath}/Project/include)
-set  (projectSourcePaths        ${currentPath}/Project/source)
-file (GLOB projectFilesInclude  ${projectIncludePaths}/*.h  ${projectIncludePaths}/*.hxx)
-file (GLOB projectFilesSource   ${projectSourcePaths}/*.cpp ${projectSourcePaths}/*.cxx)
+set  (projectIncludePath                  ${currentPath}/Project)
+FILE (GLOB_RECURSE projectFilesInclude    ${projectIncludePath}/*.h ${projectIncludePath}/*.hxx)
+FILE (GLOB_RECURSE projectFilesAndFolders ${projectIncludePath}/*)
 
-set  (testIncludePaths          ${currentPath}/Test/include)
-set  (testSourcePaths           ${currentPath}/Test/source)
-file (GLOB testFilesInclude     ${testIncludePaths}/*.h  ${testIncludePaths}/*.hxx)
-file (GLOB testFilesSource      ${testSourcePaths}/*.cpp ${testSourcePaths}/*.cxx)
+set  (testIncludePath                     ${currentPath}/Test)
+FILE (GLOB_RECURSE testFilesInclude       ${testIncludePath}/*.h ${testIncludePath}/*.hxx)
+FILE (GLOB_RECURSE testFilesAndFolders    ${testIncludePath}/*)
 
 file (GLOB buildFiles ${buildPath}/*)
 foreach (file ${buildFiles})
-   if (EXISTS ${file})
-      file(REMOVE ${file})
-   endif()
+	if (EXISTS ${file})
+		file(REMOVE ${file})
+	endif()
 endforeach(file)
 
-add_executable             (Project ${projectFilesInclude} ${projectFilesSource})
-target_include_directories (Project PUBLIC ${projectIncludePaths})
+source_group               (TREE ${projectIncludePath} PREFIX "" FILES ${projectFilesAndFolders})
+add_executable             (Project ${projectFilesAndFolders})
+target_include_directories (Project PUBLIC ${projectFilesInclude})
 target_link_libraries      (Project ${CONAN_LIBS})
 
+source_group               (TREE ${testIncludePath} PREFIX "" FILES ${testFilesAndFolders})
 link_directories           (Test ${buildPath}/lib)
-add_executable             (Test ${testFilesInclude} ${testFilesSource})
-target_include_directories (Test PUBLIC ${projectIncludePaths} ${testIncludePaths})
+add_executable             (Test ${testFilesAndFolders})
+target_include_directories (Test PUBLIC ${testFilesInclude})
 target_link_libraries      (Test ProjectLib ${CONAN_LIBS})
 
-add_library                (projectLib ${projectFilesInclude} ${projectFilesSource})
+add_library                (projectLib ${projectFilesAndFolders})
+
+
+
+
+
+
