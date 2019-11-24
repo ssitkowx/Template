@@ -1,5 +1,8 @@
 PROJECT (PackageTemplate)
 cmake_minimum_required (VERSION 2.8.12)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+endif()
 
 add_definitions ("-std=c++11")
 
@@ -29,14 +32,17 @@ source_group               (TREE ${projectIncludePath} PREFIX "" FILES ${project
 add_executable             (Project ${projectFilesAndFolders})
 target_include_directories (Project PUBLIC ${projectFilesInclude})
 target_link_libraries      (Project ${CONAN_LIBS})
+set_property               (TARGET Project PROPERTY CXX_STANDARD 17)
 
 source_group               (TREE ${testIncludePath} PREFIX "" FILES ${testFilesAndFolders})
 link_directories           (Test ${buildPath}/lib)
 add_executable             (Test ${testFilesAndFolders})
 target_include_directories (Test PUBLIC ${testFilesInclude})
 target_link_libraries      (Test ProjectLib ${CONAN_LIBS})
+set_property               (TARGET Test PROPERTY CXX_STANDARD 17)
 
-add_library                (projectLib ${projectFilesAndFolders})
+add_library                (ProjectLib ${projectFilesAndFolders})
+set_property               (TARGET ProjectLib PROPERTY CXX_STANDARD 17)
 
 
 
