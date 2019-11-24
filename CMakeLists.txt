@@ -41,7 +41,7 @@ target_include_directories (Test PUBLIC ${testFilesInclude})
 target_link_libraries      (Test ProjectLib ${CONAN_LIBS})
 set_property               (TARGET Test PROPERTY CXX_STANDARD 17)
 
-add_library                (ProjectLib ${projectFilesAndFolders})
+add_library                (ProjectLib STATIC ${projectFilesAndFolders})
 set_property               (TARGET ProjectLib PROPERTY CXX_STANDARD 17)
 
 
