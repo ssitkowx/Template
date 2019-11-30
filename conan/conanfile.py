@@ -4,14 +4,17 @@ import os
 class HelloConan(ConanFile):
     name            = "packageTemplate"
     version         = "0.1"
-    license         = "<Put the package license here>"
+    license         = "freeware"
     url             = "https://github.com/ssitkowx/PackageTemplate"
     description     = "Package template"
     settings        = "os", "compiler", "build_type", "arch"
     options         = {"shared": [True, False]}
     default_options = "shared=False"
     generators      = "cmake"
-    exports_sources = "source/*"
+    exports_sources = ["../Test/*", "../Project/*.cxx"]
+    #requires        = [("protobuf/3.6.1@bincrafters/stable"), 
+                        #("protoc_installer/3.6.1@bincrafters/stable"), 
+                        #("testPackage/1.0@demo/testing")]
     
     def source(self):
         cloneCmd = 'git clone ' + self.url + '.git'
@@ -33,5 +36,5 @@ class HelloConan(ConanFile):
         self.copy('*.so'    , dst='lib'    , src='../build/lib'      , keep_path=False)
         self.copy('*.a'     , dst='lib'    , src='../build/lib'      , keep_path=False)
 
-    #def package_info(self):
-        #self.cpp_info.libs = ["PackageTemplate"]
+    def package_info(self):
+        self.cpp_info.libs = ["PackageTemplate"]
