@@ -32,17 +32,17 @@ source_group               (TREE ${projectIncludePath} PREFIX "" FILES ${project
 add_executable             (Project ${projectFilesAndFolders})
 target_include_directories (Project PUBLIC ${projectFilesInclude})
 target_link_libraries      (Project ${CONAN_LIBS})
-set_property               (TARGET Project PROPERTY CXX_STANDARD 17)
+target_compile_features    (Project PUBLIC cxx_std_17)
 
 source_group               (TREE ${testIncludePath} PREFIX "" FILES ${testFilesAndFolders})
 link_directories           (Test ${buildPath}/lib)
 add_executable             (Test ${testFilesAndFolders})
 target_include_directories (Test PUBLIC ${testFilesInclude})
 target_link_libraries      (Test ProjectLib ${CONAN_LIBS})
-set_property               (TARGET Test PROPERTY CXX_STANDARD 17)
+target_compile_features    (Test PUBLIC cxx_std_17)
 
 add_library                (ProjectLib STATIC ${projectFilesAndFolders})
-set_property               (TARGET ProjectLib PROPERTY CXX_STANDARD 17)
+target_compile_features    (ProjectLib PUBLIC cxx_std_17)
 
 
 
