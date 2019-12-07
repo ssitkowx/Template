@@ -4,14 +4,14 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 endif()
 
-add_definitions ("-std=c++11")
-
 set  (currentPath ${CMAKE_CURRENT_SOURCE_DIR})
 set  (buildPath ${currentPath}/build)
-file (COPY ${currentPath}/conan/conanbuildinfo.cmake DESTINATION ${buildPath})
 
-include (${buildPath}/conanbuildinfo.cmake)
-conan_basic_setup()
+if (EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    file (COPY ${currentPath}/conan/conanbuildinfo.cmake DESTINATION ${buildPath})
+	include (${buildPath}/conanbuildinfo.cmake)
+	conan_basic_setup ()
+endif()
 
 set  (projectIncludePath                  ${currentPath}/Project)
 FILE (GLOB_RECURSE projectFilesInclude    ${projectIncludePath}/*.h ${projectIncludePath}/*.hxx)

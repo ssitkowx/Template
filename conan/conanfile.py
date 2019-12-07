@@ -12,9 +12,9 @@ class HelloConan(ConanFile):
     default_options = "shared=False"
     generators      = "cmake"
     exports_sources = ["../Test/*", "../Project/*.cxx"]
-    #requires        = [("protobuf/3.6.1@bincrafters/stable"), 
+    #requires        = (("protobuf/3.6.1@bincrafters/stable"), 
                         #("protoc_installer/3.6.1@bincrafters/stable"), 
-                        #("testPackage/1.0@demo/testing")]
+                        #("testPackage/1.0@demo/testing"))
     
     def source(self):
         cloneCmd = 'git clone ' + self.url + '.git'
