@@ -11,17 +11,24 @@ class HelloConan(ConanFile):
     options         = {"shared": [True, False]}
     default_options = "shared=False"
     generators      = "cmake"
-    exports_sources = ["../Test/*", "../Project/*.cxx"]
     
     def source(self):
         cloneCmd = 'git clone ' + self.url + '.git'
         self.run(cloneCmd)
 
     def build(self):
-        currentPath = os.getcwd().replace('\conan','')
-        buildPath   = currentPath + '\\build'
+        currentPath = os.getcwd();
+        projectPath = ''
+        if os.path.exists(currentPath + '\\conanfile.py'):
+            projectPath = os.getcwd().replace('\conan','')
+        elif os.path.exists(currentPath + '\\conanbuildinfo.cmake'):
+            projectPath = os.getcwd() + '\\PackageTemplate'
+        else:
+            print('Unknown path in build')
+        
+        buildPath   = projectPath + '\\build'
         cmake       = CMake(self)
-        cmake.configure(source_dir=currentPath, build_dir=buildPath)
+        cmake.configure(source_dir=projectPath, build_dir=buildPath)
         cmake.build()
         
     def package(self):
