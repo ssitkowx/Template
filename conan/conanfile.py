@@ -12,9 +12,6 @@ class HelloConan(ConanFile):
     default_options = "shared=False"
     generators      = "cmake"
     exports_sources = ["../Test/*", "../Project/*.cxx"]
-    #requires        = (("protobuf/3.6.1@bincrafters/stable"), 
-                        #("protoc_installer/3.6.1@bincrafters/stable"), 
-                        #("testPackage/1.0@demo/testing"))
     
     def source(self):
         cloneCmd = 'git clone ' + self.url + '.git'
@@ -28,13 +25,13 @@ class HelloConan(ConanFile):
         cmake.build()
         
     def package(self):
-        self.copy('*.h'     , dst='include', src='../Project/include', keep_path=False)
-        self.copy('*.hxx'   , dst='include', src='../Project/include', keep_path=False)
-        self.copy('*.lib'   , dst='lib'    , src='../build/lib'      , keep_path=False)
-        self.copy('*.dll'   , dst='bin'    , src='../build/bin'      , keep_path=False)
-        self.copy('*.dylib*', dst='lib'    , src='../build/lib'      , keep_path=False)
-        self.copy('*.so'    , dst='lib'    , src='../build/lib'      , keep_path=False)
-        self.copy('*.a'     , dst='lib'    , src='../build/lib'      , keep_path=False)
+        self.copy('*.h'     , dst='include', src='../Project'  , keep_path=False)
+        self.copy('*.hxx'   , dst='include', src='../Project'  , keep_path=False)
+        self.copy('*.lib'   , dst='lib'    , src='../build/lib', keep_path=False)
+        self.copy('*.dll'   , dst='bin'    , src='../build/bin', keep_path=False)
+        self.copy('*.dylib*', dst='lib'    , src='../build/lib', keep_path=False)
+        self.copy('*.so'    , dst='lib'    , src='../build/lib', keep_path=False)
+        self.copy('*.a'     , dst='lib'    , src='../build/lib', keep_path=False)
 
     def package_info(self):
         self.cpp_info.libs = ["PackageTemplate"]
