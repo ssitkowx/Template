@@ -1,1 +1,2 @@
-# package template
+# Template
+Template for projects and packages
