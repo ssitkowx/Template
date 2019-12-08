@@ -2,18 +2,18 @@ from conans import ConanFile, CMake, tools
 import os
 
 class HelloConan(ConanFile):
-    name            = "packageTemplate"
-    version         = "0.1"
+    name            = "Template"
+    version         = "1.0"
     license         = "freeware"
-    url             = "https://github.com/ssitkowx/PackageTemplate"
-    description     = "Package template"
+    url             = "https://github.com/ssitkowx/Template.git"
+    description     = "Template for projects and packages"
     settings        = "os", "compiler", "build_type", "arch"
     options         = {"shared": [True, False]}
     default_options = "shared=False"
     generators      = "cmake"
     
     def source(self):
-        cloneCmd = 'git clone ' + self.url + '.git'
+        cloneCmd = 'git clone ' + self.url
         self.run(cloneCmd)
 
     def build(self):
@@ -22,7 +22,7 @@ class HelloConan(ConanFile):
         if os.path.exists(currentPath + '\\conanfile.py'):
             projectPath = os.getcwd().replace('\conan','')
         elif os.path.exists(currentPath + '\\conanbuildinfo.cmake'):
-            projectPath = os.getcwd() + '\\PackageTemplate'
+            projectPath = os.getcwd() + '\\Template'
         else:
             print('Unknown path in build')
         
@@ -41,4 +41,4 @@ class HelloConan(ConanFile):
         self.copy('*.a'     , dst='lib'    , src='../build/lib', keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["PackageTemplate"]
+        self.cpp_info.libs = ["Template"]
