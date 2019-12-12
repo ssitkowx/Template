@@ -1,7 +1,7 @@
 from conans import ConanFile, CMake, tools
 import os
 
-class HelloConan(ConanFile):
+class Conan(ConanFile):
     name            = "Template"
     version         = "1.0"
     license         = "freeware"
@@ -22,7 +22,7 @@ class HelloConan(ConanFile):
         if os.path.exists(currentPath + '\\conanfile.py'):
             projectPath = os.getcwd().replace('\conan','')
         elif os.path.exists(currentPath + '\\conanbuildinfo.cmake'):
-            projectPath = os.getcwd() + '\\Template'
+            projectPath = os.getcwd() + '\\' + self.name
         else:
             print('Unknown path in build')
         
@@ -41,4 +41,4 @@ class HelloConan(ConanFile):
         self.copy('*.a'     , dst='lib'    , src='../build/lib', keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["Template"]
+        self.cpp_info.libs = [self.name]

@@ -1,4 +1,7 @@
+#include "template.hxx"
 
-int main(int argc, char** argv){
-        return 0;
+int main(int argc, char** argv)
+{
+	fun();
+    return 0;
 }
