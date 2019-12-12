@@ -20,13 +20,13 @@ class Conan(ConanFile):
         currentPath = os.getcwd();
         projectPath = ''
         if os.path.exists(currentPath + '\\conanfile.py'):
-            projectPath = os.getcwd().replace('\conan','')
+            projectPath = os.getcwd().replace('\Conan','')
         elif os.path.exists(currentPath + '\\conanbuildinfo.cmake'):
             projectPath = os.getcwd() + '\\' + self.name
         else:
             print('Unknown path in build')
         
-        buildPath   = projectPath + '\\build'
+        buildPath   = projectPath + '\\Build'
         cmake       = CMake(self)
         cmake.configure(source_dir=projectPath, build_dir=buildPath)
         cmake.build()
