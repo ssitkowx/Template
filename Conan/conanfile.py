@@ -11,6 +11,8 @@ class Conan(ConanFile):
     options         = {"shared": [True, False]}
     default_options = "shared=False"
     generators      = "cmake"
+    author          = "sylsit"
+    #requires        = "Template/1.0@ssitkowx/testing"
     
     def source(self):
         cloneCmd = 'git clone ' + self.url
@@ -18,27 +20,32 @@ class Conan(ConanFile):
 
     def build(self):
         currentPath = os.getcwd();
-        projectPath = ''
-        if os.path.exists(currentPath + '\\conanfile.py'):
-            projectPath = os.getcwd().replace('\Conan','')
-        elif os.path.exists(currentPath + '\\conanbuildinfo.cmake'):
+        projectPath = os.getcwd().replace('\Conan','')
+        if not os.path.exists(projectPath + '\\CMakeLists.txt'):
             projectPath = os.getcwd() + '\\' + self.name
-        else:
-            print('Unknown path in build')
 
-        buildPath   = projectPath + '\\Build'
-        cmake       = CMake(self)
-        cmake.configure(source_dir=projectPath, build_dir=buildPath)
-        cmake.build()
+        self.buildPath = projectPath + '\\Build'
         
-    def package(self):
-        self.copy('*.h'     , dst='include', src='../Project'  , keep_path=False)
-        self.copy('*.hxx'   , dst='include', src='../Project'  , keep_path=False)
-        self.copy('*.lib'   , dst='lib'    , src='../build/lib', keep_path=False)
-        self.copy('*.dll'   , dst='bin'    , src='../build/bin', keep_path=False)
-        self.copy('*.dylib*', dst='lib'    , src='../build/lib', keep_path=False)
-        self.copy('*.so'    , dst='lib'    , src='../build/lib', keep_path=False)
-        self.copy('*.a'     , dst='lib'    , src='../build/lib', keep_path=False)
+        if self.settings.os == 'Windows' and self.settings.compiler == 'Visual Studio':
+            cmake = CMake(self)
+            cmake.configure(source_dir=projectPath, build_dir=self.buildPath)
+            cmake.build()
+        else:
+            raise Exception('Unsupported os in build')
+        
+    def package(self):     
+        currentPath = os.getcwd();
+        projectPath = os.getcwd().replace('\Conan','')
+        if not os.path.exists(projectPath + '\\CMakeLists.txt'):
+            projectPath = self.buildPath.replace('Build','')
+    
+        self.copy('*.h'     , dst='include', src= projectPath + '\\Project'  , keep_path=False)
+        self.copy('*.hxx'   , dst='include', src= projectPath + '\\Project'  , keep_path=False)
+        self.copy('*.lib'   , dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
+        self.copy('*.dll'   , dst='bin'    , src= projectPath + '\\build/bin', keep_path=False)
+        self.copy('*.dylib*', dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
+        self.copy('*.so'    , dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
+        self.copy('*.a'     , dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
 
     def package_info(self):
         self.cpp_info.libs = [self.name]
