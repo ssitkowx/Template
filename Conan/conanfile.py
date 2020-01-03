@@ -12,7 +12,7 @@ class Conan(ConanFile):
     default_options = "shared=False"
     generators      = "cmake"
     author          = "sylsit"
-    #requires        = "Template/1.0@ssitkowx/testing"
+    #requires        = "ProjectOrPackageName/1.0@ssitkowx/testing"
     
     def source(self):
         cloneCmd = 'git clone ' + self.url
@@ -49,3 +49,10 @@ class Conan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = [self.name]
+        
+        
+    def pre_build(output, conanfile, **kwargs):
+        print('prebuild !!!!!!!!!!!')
+
+    def post_build(output, conanfile, **kwargs):
+        print('postbuild !!!!!!!!!!!')
