@@ -49,10 +49,3 @@ class Conan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = [self.name]
-        
-        
-    def pre_build(output, conanfile, **kwargs):
-        print('prebuild !!!!!!!!!!!')
-
-    def post_build(output, conanfile, **kwargs):
-        print('postbuild !!!!!!!!!!!')
