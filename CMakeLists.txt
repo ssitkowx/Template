@@ -5,8 +5,14 @@ set (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
 set (BuildPath   ${CurrentPath}/Build)
 set (ConanPath   ${CurrentPath}/Conan)
 
-include (${ConanPath}/conanbuildinfo.cmake)
-conan_basic_setup ()
+if (EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    file (COPY ${ConanPath}/conanbuildinfo.cmake DESTINATION ${BuildPath})
+	include (${BuildPath}/conanbuildinfo.cmake)
+	conan_basic_setup ()
+else
+	include (${ConanPath}/conanbuildinfo.cmake)
+	conan_basic_setup ()
+endif()
 
 set  (ProjectIncludePath                  ${CurrentPath}/Project)
 FILE (GLOB_RECURSE ProjectFilesInclude    ${ProjectIncludePath}/*.h ${ProjectIncludePath}/*.hxx)
