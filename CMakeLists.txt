@@ -8,10 +8,11 @@ set (ConanPath   ${CurrentPath}/Conan)
 if (EXISTS ${CurrentPath}/conanbuildinfo.cmake)
     file (COPY ${CurrentPath}/conanbuildinfo.cmake DESTINATION ${BuildPath})
 	include (${BuildPath}/conanbuildinfo.cmake)
-	conan_basic_setup ()
 else ()
 	include (${ConanPath}/conanbuildinfo.cmake)
 endif()
+
+conan_basic_setup ()
 
 set  (ProjectIncludePath                  ${CurrentPath}/Project)
 FILE (GLOB_RECURSE ProjectFilesInclude    ${ProjectIncludePath}/*.h ${ProjectIncludePath}/*.hxx)
