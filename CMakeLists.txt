@@ -5,6 +5,7 @@ set (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
 set (BuildPath   ${CurrentPath}/Build)
 
 get_filename_component(barename ${CurrentPath} PATH)
+message('AAAAAAAAAAAAAAAA')
 message(STATUS ${barename})
 
 if (EXISTS ${CurrentPath}/conanbuildinfo.cmake)
