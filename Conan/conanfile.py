@@ -5,7 +5,9 @@ class Conan(ConanFile):
     name            = "Template"
     version         = "1.0"
     license         = "freeware"
-    url             = "https://github.com/ssitkowx/Template.git"
+    repoUrl         = "https://github.com/ssitkowx"
+    url             = repoUrl + '/' + name + '.git'
+    downloadsPath   = "C:/Users/sitko/.conan/download"
     description     = "Template for projects and packages"
     settings        = "os", "compiler", "build_type", "arch"
     options         = {"shared": [True, False]}
@@ -39,13 +41,13 @@ class Conan(ConanFile):
         if not os.path.exists(projectPath + '\\CMakeLists.txt'):
             projectPath = self.buildPath.replace('Build','')
     
-        self.copy('*.h'     , dst='include', src= projectPath + '\\Project'  , keep_path=False)
-        self.copy('*.hxx'   , dst='include', src= projectPath + '\\Project'  , keep_path=False)
-        self.copy('*.lib'   , dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
-        self.copy('*.dll'   , dst='bin'    , src= projectPath + '\\build/bin', keep_path=False)
-        self.copy('*.dylib*', dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
-        self.copy('*.so'    , dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
-        self.copy('*.a'     , dst='lib'    , src= projectPath + '\\build/lib', keep_path=False)
+        self.copy('*.h'     , dst='include', src= projectPath + '\Project'  , keep_path=False)
+        self.copy('*.hxx'   , dst='include', src= projectPath + '\Project'  , keep_path=False)
+        self.copy('*.lib'   , dst='lib'    , src= projectPath + '\build\lib', keep_path=False)
+        self.copy('*.dll'   , dst='bin'    , src= projectPath + '\build\bin', keep_path=False)
+        self.copy('*.dylib*', dst='lib'    , src= projectPath + '\build\lib', keep_path=False)
+        self.copy('*.so'    , dst='lib'    , src= projectPath + '\build\lib', keep_path=False)
+        self.copy('*.a'     , dst='lib'    , src= projectPath + '\build\lib', keep_path=False)
 
     def package_info(self):
         self.cpp_info.libs = [self.name]
