@@ -3,12 +3,6 @@ cmake_minimum_required (VERSION 3.16)
 
 set (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
 set (BuildPath   ${CurrentPath}/Build)
-#CMAKE_BINARY_DIR
-#CMAKE_CURRENT_BINARY_DIR
-message("Path !!!!!!!!!!!")
-message(${CMAKE_CURRENT_SOURCE_DIR})
-message(${CMAKE_CURRENT_SOURCE_DIR}/../)
-
 
 if (EXISTS ${CurrentPath}/conanbuildinfo.cmake)
     file (COPY ${CurrentPath}/conanbuildinfo.cmake DESTINATION ${BuildPath})
