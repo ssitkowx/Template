@@ -6,6 +6,7 @@ set (BuildPath   ${CurrentPath}/Build)
 
 get_filename_component(barename ${CurrentPath} PATH)
 message('AAAAAAAAAAAAAAAA')
+message(${CurrentPath})
 message(STATUS ${barename})
 
 if (EXISTS ${CurrentPath}/conanbuildinfo.cmake)
