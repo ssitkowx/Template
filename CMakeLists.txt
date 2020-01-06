@@ -5,13 +5,13 @@ set (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
 set (BuildPath   ${CurrentPath}/Build)
 
 message("Path !!!!!!!!!!!")
-message(../${CurrentPath})
+message(${CurrentPath})
 
-if (EXISTS ../${CurrentPath}/conanbuildinfo.cmake)
-    file (COPY ../${CurrentPath}/conanbuildinfo.cmake DESTINATION ${BuildPath})
+if (EXISTS ${CurrentPath}/conanbuildinfo.cmake)
+    file (COPY ${CurrentPath}/conanbuildinfo.cmake DESTINATION ${BuildPath})
 	include (${BuildPath}/conanbuildinfo.cmake)
 else()
-	include (${CurrentPath}/conanbuildinfo.cmake)
+	include (${CurrentPath}/Conan/conanbuildinfo.cmake)
 endif()
 
 conan_basic_setup ()
