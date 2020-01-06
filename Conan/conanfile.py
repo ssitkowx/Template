@@ -43,11 +43,11 @@ class Conan(ConanFile):
     
         self.copy('*.h'     , dst='include', src= projectPath + '\Project'  , keep_path=False)
         self.copy('*.hxx'   , dst='include', src= projectPath + '\Project'  , keep_path=False)
-        self.copy('*.lib'   , dst='lib'    , src= projectPath + '\build\lib', keep_path=False)
-        self.copy('*.dll'   , dst='bin'    , src= projectPath + '\build\bin', keep_path=False)
-        self.copy('*.dylib*', dst='lib'    , src= projectPath + '\build\lib', keep_path=False)
-        self.copy('*.so'    , dst='lib'    , src= projectPath + '\build\lib', keep_path=False)
-        self.copy('*.a'     , dst='lib'    , src= projectPath + '\build\lib', keep_path=False)
+        self.copy('*.lib'   , dst='lib'    , src= projectPath + '\Build\lib', keep_path=False)
+        self.copy('*.dll'   , dst='bin'    , src= projectPath + '\Build\bin', keep_path=False)
+        self.copy('*.dylib*', dst='lib'    , src= projectPath + '\Build\lib', keep_path=False)
+        self.copy('*.so'    , dst='lib'    , src= projectPath + '\Build\lib', keep_path=False)
+        self.copy('*.a'     , dst='lib'    , src= projectPath + '\Build\lib', keep_path=False)
 
     def package_info(self):
         self.cpp_info.libs = [self.name]
