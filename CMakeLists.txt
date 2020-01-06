@@ -1,4 +1,4 @@
-PROJECT (Template)
+PROJECT (ZONK)
 cmake_minimum_required (VERSION 3.16)
 
 set                    (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
