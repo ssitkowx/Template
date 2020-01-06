@@ -1,6 +1,7 @@
 PROJECT (Template)
 cmake_minimum_required (VERSION 3.16)
 
+set (ProjectName Template)
 set (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
 set (BuildPath   ${CurrentPath}/Build)
 
@@ -14,7 +15,7 @@ endif()
 
 conan_basic_setup ()
 
-set  (ProjectIncludePath                  ${CurrentPath}/Project)
+set  (ProjectIncludePath                  ${CurrentPath}/${ProjectName})
 FILE (GLOB_RECURSE ProjectFilesInclude    ${ProjectIncludePath}/*.h ${ProjectIncludePath}/*.hxx)
 FILE (GLOB_RECURSE ProjectFilesAndFolders ${ProjectIncludePath}/*)
 
@@ -49,22 +50,22 @@ ENDMACRO()
 
 REMOVE_FILES("${BuildPath}")
 
-source_group               (TREE                        ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
-add_executable             (Project                     ${ProjectFilesAndFolders})
-target_include_directories (Project PUBLIC              ${ProjectSubdirectoriesPathsLists})
-target_link_libraries      (Project                     ${CONAN_LIBS})
-target_compile_features    (Project PUBLIC cxx_std_17)
+source_group               (TREE                        	  ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
+add_executable             (${ProjectName}                    ${ProjectFilesAndFolders})
+target_include_directories (${ProjectName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
+target_link_libraries      (${ProjectName}                    ${CONAN_LIBS})
+target_compile_features    (${ProjectName} PUBLIC cxx_std_17)
 
-source_group               (TREE                        ${TestIncludePath} PREFIX "" FILES ${TestFilesAndFolders})
-link_directories           (Test                        ${BuildPath}/lib)
-add_executable             (Test                        ${TestFilesAndFolders})
-target_include_directories (Test    PUBLIC              ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
-target_link_libraries      (Test    Template            ${CONAN_LIBS})
+source_group               (TREE                        	  ${TestIncludePath} PREFIX "" FILES ${TestFilesAndFolders})
+link_directories           (Test                        	  ${BuildPath}/Lib)
+add_executable             (Test                              ${TestFilesAndFolders})
+target_include_directories (Test    PUBLIC                    ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
+target_link_libraries      (Test    ${LibraryName}            ${CONAN_LIBS})
 target_compile_features    (Test    PUBLIC cxx_std_17)
 
-add_library                (Template STATIC             ${ProjectFilesAndFolders})
-target_include_directories (Template PUBLIC             ${ProjectSubdirectoriesPathsLists})
-target_compile_features    (Template PUBLIC cxx_std_17)
+add_library                (Lib STATIC                        ${ProjectFilesAndFolders})
+target_include_directories (Lib PUBLIC                        ${ProjectSubdirectoriesPathsLists})
+target_compile_features    (Lib PUBLIC cxx_std_17)
 
 
 
