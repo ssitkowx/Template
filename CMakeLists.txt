@@ -15,7 +15,7 @@ endif()
 
 conan_basic_setup ()
 
-set  (ProjectIncludePath                  ${CurrentPath}/${ProjectName})
+set  (ProjectIncludePath                  ${CurrentPath}/Project)
 FILE (GLOB_RECURSE ProjectFilesInclude    ${ProjectIncludePath}/*.h ${ProjectIncludePath}/*.hxx)
 FILE (GLOB_RECURSE ProjectFilesAndFolders ${ProjectIncludePath}/*)
 
@@ -57,10 +57,10 @@ target_link_libraries      (${ProjectName}                    ${CONAN_LIBS})
 target_compile_features    (${ProjectName} PUBLIC cxx_std_17)
 
 source_group               (TREE                        	  ${TestIncludePath} PREFIX "" FILES ${TestFilesAndFolders})
-link_directories           (Test                        	  ${BuildPath}/Lib)
+link_directories           (Test                        	  ${BuildPath}/lib)
 add_executable             (Test                              ${TestFilesAndFolders})
 target_include_directories (Test    PUBLIC                    ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
-target_link_libraries      (Test    ${LibraryName}            ${CONAN_LIBS})
+target_link_libraries      (Test    Lib            ${CONAN_LIBS})
 target_compile_features    (Test    PUBLIC cxx_std_17)
 
 add_library                (Lib STATIC                        ${ProjectFilesAndFolders})
