@@ -68,20 +68,20 @@ ENDIF()
 
 SOURCE_GROUP               (TREE                       		   ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 ADD_EXECUTABLE             (${ProjectName}                     ${ProjectFilesAndFolders})
-TARGET_INCLUDE_DIRECTORIES (${ProjectName}  PUBLIC             ${ProjectSubdirectoriesPathsLists})
+TARGET_INCLUDE_DIRECTORIES (${ProjectName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
 TARGET_LINK_LIBRARIES      (${ProjectName}                     ${PackagesLibsNames})
-TARGET_COMPILE_FEATURES    (${ProjectName}  PUBLIC CXX_STD_17)
+TARGET_COMPILE_FEATURES    (${ProjectName} PUBLIC cxx_std_17)
 
 SOURCE_GROUP               (TREE                       		   ${TestIncludePath} PREFIX "" FILES ${TestFilesAndFolders})
 LINK_DIRECTORIES           (Tests                       	   ${BuildPath}/lib)
 ADD_EXECUTABLE             (Tests                       	   ${TestFilesAndFolders})
-TARGET_INCLUDE_DIRECTORIES (Tests    	    PUBLIC             ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
+TARGET_INCLUDE_DIRECTORIES (Tests    	   PUBLIC             ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
 TARGET_LINK_LIBRARIES      (Tests    		                   ${LibraryName} ${PackagesLibsNames})
-TARGET_COMPILE_FEATURES    (Tests    		PUBLIC CXX_STD_17)
+TARGET_COMPILE_FEATURES    (Tests    	   PUBLIC cxx_std_17)
 
-ADD_LIBRARY                (${LibraryName}  STATIC             ${ProjectFilesAndFolders})
-TARGET_INCLUDE_DIRECTORIES (${LibraryName}  PUBLIC             ${ProjectSubdirectoriesPathsLists})
-TARGET_COMPILE_FEATURES    (${LibraryName}  PUBLIC CXX_STD_17)
+ADD_LIBRARY                (${LibraryName} STATIC             ${ProjectFilesAndFolders})
+TARGET_INCLUDE_DIRECTORIES (${LibraryName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
+TARGET_COMPILE_FEATURES    (${LibraryName} PUBLIC cxx_std_17)
 
 
 
