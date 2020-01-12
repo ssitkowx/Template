@@ -5,6 +5,24 @@ set                    (ProjectName Template)
 set                    (LibraryName TemplateLib)
 set                    (PackagesLibsNames "")
 set                    (PackagesLibsPaths "")
+#${CONAN_LIBS}
+
+set                    (ConanLibraryPath "C:/Users/sitko/.conan/data")
+set                    (CONAN_LIBS ${CONAN_LIBS} Proj1 Proj2 Proj3)
+
+MACRO(GET_LIBRARIES_PATHS_LISTS libraries_paths_lists)
+    SET(libraryPathsLists "")
+    FOREACH(library ${CONAN_LIBS})
+        SET(libraryPathsLists ${libraryPathsLists} ${ConanLibraryPath}/${library})
+    ENDFOREACH()
+    SET(${libraries_paths_lists} ${libraryPathsLists})
+ENDMACRO()
+
+set(LibrariesPathsLists "")
+GET_LIBRARIES_PATHS_LISTS(LibrariesPathsLists)
+message("this is mine")
+message(${LibrariesPathsLists})
+
 set                    (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
 get_filename_component (ParentPath  ${CurrentPath} PATH)
 
@@ -20,7 +38,7 @@ set  (ProjectIncludePath                  ${CurrentPath}/${ProjectName})
 FILE (GLOB_RECURSE ProjectFilesInclude    ${ProjectIncludePath}/*.h ${ProjectIncludePath}/*.hxx)
 FILE (GLOB_RECURSE ProjectFilesAndFolders ${ProjectIncludePath}/*)
 
-set  (TestIncludePath                     ${CurrentPath}/Test)
+set  (TestIncludePath                     ${CurrentPath}/Tests)
 FILE (GLOB_RECURSE TestFilesInclude       ${TestIncludePath}/*.h ${TestIncludePath}/*.hxx)
 FILE (GLOB_RECURSE TestFilesAndFolders    ${TestIncludePath}/*)
 
@@ -62,7 +80,7 @@ source_group               (TREE                       		   ${TestIncludePath} P
 link_directories           (Tests                       	   ${BuildPath}/lib)
 add_executable             (Tests                       	   ${TestFilesAndFolders})
 target_include_directories (Tests    	    PUBLIC             ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
-target_link_libraries      (Tests    		                   ${PackagesLibsNames})
+target_link_libraries      (Tests    		                   ${LibraryName} ${PackagesLibsNames})
 target_compile_features    (Tests    		PUBLIC cxx_std_17)
 
 add_library                (${LibraryName}  STATIC             ${ProjectFilesAndFolders})
