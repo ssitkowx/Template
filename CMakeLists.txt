@@ -14,7 +14,7 @@ endif()
 
 conan_basic_setup ()
 
-set  (ProjectIncludePath                  ${CurrentPath}/Project)
+set  (ProjectIncludePath                  ${CurrentPath}/${ProjectName})
 FILE (GLOB_RECURSE ProjectFilesInclude    ${ProjectIncludePath}/*.h ${ProjectIncludePath}/*.hxx)
 FILE (GLOB_RECURSE ProjectFilesAndFolders ${ProjectIncludePath}/*)
 
