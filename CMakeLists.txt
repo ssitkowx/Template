@@ -1,8 +1,9 @@
 PROJECT(Template)
 CMAKE_MINIMUM_REQUIRED(VERSION 3.16)
 
-SET                   (ProjectName Template)
-SET                   (LibraryName TemplateLib)
+SET                   (ProjectName Project)
+SET                   (TestsName   Tests)
+SET                   (LibraryName ${CMAKE_PROJECT_NAME}Lib)
 SET                   (ConanLibraryPath "C:/Users/sitko/.conan/data")
 SET                   (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
 GET_FILENAME_COMPONENT(ParentPath  ${CurrentPath} PATH)
@@ -19,7 +20,7 @@ SET (ProjectIncludePath                  ${CurrentPath}/${ProjectName})
 FILE(GLOB_RECURSE ProjectFilesInclude    ${ProjectIncludePath}/*.h ${ProjectIncludePath}/*.hxx)
 FILE(GLOB_RECURSE ProjectFilesAndFolders ${ProjectIncludePath}/*)
 
-SET (TestIncludePath                     ${CurrentPath}/Tests)
+SET (TestIncludePath                     ${CurrentPath}/${TestsName})
 FILE(GLOB_RECURSE TestFilesInclude       ${TestIncludePath}/*.h ${TestIncludePath}/*.hxx)
 FILE(GLOB_RECURSE TestFilesAndFolders    ${TestIncludePath}/*)
 
@@ -68,19 +69,19 @@ ENDIF()
 
 SOURCE_GROUP               (TREE                       		   ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 ADD_EXECUTABLE             (${ProjectName}                     ${ProjectFilesAndFolders})
-TARGET_INCLUDE_DIRECTORIES (${ProjectName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
+TARGET_INCLUDE_DIRECTORIES (${ProjectName} PUBLIC              ${ProjectSubdirectoriesPathsLists})
 TARGET_LINK_LIBRARIES      (${ProjectName}                     ${PackagesLibsNames})
 TARGET_COMPILE_FEATURES    (${ProjectName} PUBLIC cxx_std_17)
 
 SOURCE_GROUP               (TREE                       		   ${TestIncludePath} PREFIX "" FILES ${TestFilesAndFolders})
-LINK_DIRECTORIES           (Tests                       	   ${BuildPath}/lib)
-ADD_EXECUTABLE             (Tests                       	   ${TestFilesAndFolders})
-TARGET_INCLUDE_DIRECTORIES (Tests    	   PUBLIC             ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
-TARGET_LINK_LIBRARIES      (Tests    		                   ${LibraryName} ${PackagesLibsNames})
-TARGET_COMPILE_FEATURES    (Tests    	   PUBLIC cxx_std_17)
+LINK_DIRECTORIES           (${TestsName}                       ${BuildPath}/lib)
+ADD_EXECUTABLE             (${TestsName}                       ${TestFilesAndFolders})
+TARGET_INCLUDE_DIRECTORIES (${TestsName}   PUBLIC              ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
+TARGET_LINK_LIBRARIES      (${TestsName}    		           ${LibraryName} ${PackagesLibsNames})
+TARGET_COMPILE_FEATURES    (${TestsName}   PUBLIC cxx_std_17)
 
-ADD_LIBRARY                (${LibraryName} STATIC             ${ProjectFilesAndFolders})
-TARGET_INCLUDE_DIRECTORIES (${LibraryName} PUBLIC             ${ProjectSubdirectoriesPathsLists})
+ADD_LIBRARY                (${LibraryName} STATIC              ${ProjectFilesAndFolders})
+TARGET_INCLUDE_DIRECTORIES (${LibraryName} PUBLIC              ${ProjectSubdirectoriesPathsLists})
 TARGET_COMPILE_FEATURES    (${LibraryName} PUBLIC cxx_std_17)
 
 
