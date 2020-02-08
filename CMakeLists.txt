@@ -65,8 +65,6 @@ IF (NOT CONAN_LIBS STREQUAL "")
 	GET_LIBRARIES_PATHS_LISTS(LibrariesPathsLists)
 ENDIF()
 
-#MESSAGE(${LibrariesPathsLists})
-
 SOURCE_GROUP               (TREE                       		   ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 ADD_EXECUTABLE             (${ProjectName}                     ${ProjectFilesAndFolders})
 TARGET_INCLUDE_DIRECTORIES (${ProjectName} PUBLIC              ${ProjectSubdirectoriesPathsLists})
@@ -80,6 +78,7 @@ TARGET_INCLUDE_DIRECTORIES (${TestsName}   PUBLIC              ${ProjectSubdirec
 TARGET_LINK_LIBRARIES      (${TestsName}    		           ${LibraryName} ${PackagesLibsNames})
 TARGET_COMPILE_FEATURES    (${TestsName}   PUBLIC cxx_std_17)
 
+SOURCE_GROUP               (TREE                       		   ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 ADD_LIBRARY                (${LibraryName} STATIC              ${ProjectFilesAndFolders})
 TARGET_INCLUDE_DIRECTORIES (${LibraryName} PUBLIC              ${ProjectSubdirectoriesPathsLists})
 TARGET_COMPILE_FEATURES    (${LibraryName} PUBLIC cxx_std_17)
