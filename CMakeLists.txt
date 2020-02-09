@@ -75,7 +75,7 @@ SOURCE_GROUP               (TREE                       	       ${TestIncludePath
 LINK_DIRECTORIES           (${TestsName}                       ${BuildPath}/lib)
 ADD_EXECUTABLE             (${TestsName}                       ${TestFilesAndFolders})
 TARGET_INCLUDE_DIRECTORIES (${TestsName}   PUBLIC              ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
-TARGET_LINK_LIBRARIES      (${TestsName}    		           ${LibraryName} ${PackagesLibsNames})
+TARGET_LINK_LIBRARIES      (${TestsName}    		       ${LibraryName} ${PackagesLibsNames})
 TARGET_COMPILE_FEATURES    (${TestsName}   PUBLIC cxx_std_17)
 
 SOURCE_GROUP               (TREE                       	       ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
