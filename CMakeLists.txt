@@ -75,11 +75,11 @@ SOURCE_GROUP               (TREE                       	       ${TestIncludePath
 LINK_DIRECTORIES           (${TestsName}                       ${BuildPath}/lib)
 ADD_EXECUTABLE             (${TestsName}                       ${TestFilesAndFolders})
 TARGET_INCLUDE_DIRECTORIES (${TestsName}   PUBLIC              ${ProjectSubdirectoriesPathsLists} ${TestSubdirectoriesPathsLists})
-TARGET_LINK_LIBRARIES      (${TestsName}    		       ${LibraryName} ${PackagesLibsNames})
+TARGET_LINK_LIBRARIES      (${TestsName}    		           ${LibraryName} ${PackagesLibsNames})
 TARGET_COMPILE_FEATURES    (${TestsName}   PUBLIC cxx_std_17)
 
 SOURCE_GROUP               (TREE                       	       ${ProjectIncludePath} PREFIX "" FILES ${ProjectFilesAndFolders})
 ADD_LIBRARY                (${LibraryName} STATIC              ${ProjectFilesAndFolders})
 TARGET_INCLUDE_DIRECTORIES (${LibraryName} PUBLIC              ${ProjectSubdirectoriesPathsLists})
-TARGET_LINK_LIBRARIES      (${LibraryName}    		       ${CONAN_LIBS_GTEST})
+TARGET_LINK_LIBRARIES      (${LibraryName}    		           ${CONAN_LIBS_GTEST})
 TARGET_COMPILE_FEATURES    (${LibraryName} PUBLIC cxx_std_17)
