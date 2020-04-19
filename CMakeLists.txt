@@ -6,7 +6,6 @@ SET                   (TestsName   Tests)
 SET                   (LibraryName ${CMAKE_PROJECT_NAME}Lib)
 SET                   (ConanLibraryPath "C:/Users/sitko/.conan/data")
 SET                   (CurrentPath ${CMAKE_CURRENT_SOURCE_DIR})
-GET_FILENAME_COMPONENT(ParentPath  ${CurrentPath} PATH)
 
 IF(EXISTS ${ParentPath}/conanbuildinfo.cmake)
 	INCLUDE(${ParentPath}/conanbuildinfo.cmake)
