@@ -15,8 +15,8 @@ class Conan(ConanFile):
     generators      = "cmake"
     author          = "sylsit"
     exports_sources = '../*'
-    requires        = "gtest/1.8.1@bincrafters/stable"
-    build_requires  = []
+    requires        = []
+    buildPackages   = []
     
     def createDownload(self):
         if not os.path.isdir(self.downloadsPath):
@@ -32,10 +32,10 @@ class Conan(ConanFile):
         self.run('conan create . ' + user + '/' + channel)
     
     def source(self):
-        for packages in self.build_requires:
+        for packages in self.buildPackages:
             package = (re.split('[/@]', packages, 3))
             name    = package[0]
-            #version = package[1]
+            version = package[1]
             user    = package[2]
             channel = package[3]
 
