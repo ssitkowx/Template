@@ -13,7 +13,7 @@ Configuration:
 3. You need update your remotes.
    conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
    
-4. Edit conanfile.py
+4. Edit conanfile.py. For example:
   - name     = "Template"                                          -> Display
   - Packages = ["packageName/version@owner/channel", next package] -> ["Logger/1.0@ssitkowx/stable", "Utils/2.3@ssitkowx/testing"] 
 
