@@ -11,7 +11,7 @@ Configuration:
    https://bintray.com/bincrafters/public-conan/gtest%3Abincrafters/1.8.1%3Astable#
 
 3. You need update your remotes.
-   conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+   Conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
    
 4. Edit conanfile.py. For example:
   - name     = "Template"                                          -> Display
@@ -23,7 +23,7 @@ Builidng:
 3. Type conan source .
 4. Type conan install .
 5. Type conan build .
-6. Got to "Build" folder and open project.
+6. Got to "Build" folder and open Visual Project.
 
 Tip:
 - It is unacceptable if the package calls the package (recursion),
