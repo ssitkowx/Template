@@ -3,14 +3,14 @@ Template for projects and packages.
 
 Configuration:
 1. Currently used:
-- Python 2.7.16
-- cmake version 3.17.0-rc2
-- Visual Studio 2019
+- Python 2.7.16,
+- cmake version 3.17.0-rc2,
+- Visual Studio 2019.
 
-2. GTest and GMock tooked from 
+2. GTest and GMock tooked from:
    https://bintray.com/bincrafters/public-conan/gtest%3Abincrafters/1.8.1%3Astable#
 
-3. You need update your remotes.
+3. You need update your remotes:
    Conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
    
 4. Edit conanfile.py. For example:
