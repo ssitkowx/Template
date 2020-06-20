@@ -27,4 +27,5 @@ Builidng:
 
 Tip:
 - It is unacceptable if the package calls the package (recursion),
-- The first time when you run python, packages may be missing. Please follow the python suggestion to install them.
+- The first time when you run python, packages may be missing. Please follow the python suggestion to install them,
+- To install gtest and gmock packages for specified options and settings type "conan install . --build gtest".
