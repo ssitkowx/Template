@@ -1,5 +1,5 @@
-# Display
-General class for display.
+# Template
+Template for projects and packages.
 
 Configuration:
 1. Currently used:
@@ -12,6 +12,10 @@ Configuration:
 
 3. You need update your remotes:
    Conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+   
+4. Edit conanfile.py. For example:
+  - name     = "Template"                                          -> Display
+  - Packages = ["packageName/version@owner/channel", next package] -> ["Logger/1.0@ssitkowx/stable", "Utils/2.3@ssitkowx/testing"] 
 
 Builidng:
 1. Go to Conan folder,
