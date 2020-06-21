@@ -27,5 +27,7 @@ Builidng:
 
 Tip:
 - It is unacceptable if the package calls the package (recursion),
-- The first time when you run python, packages may be missing. Please follow the python suggestion to install them,
+- The first time you start the program python packages can be missing. Please follow the python suggestion to install them,
+- The first time you start the program using "conan build ." CMakeLists is updated with current project name and packages names. 
+  Remove Build folder and try again with updated CMakeLists.txt,
 - To install gtest and gmock packages for specified options and settings type "conan install . --build gtest".
