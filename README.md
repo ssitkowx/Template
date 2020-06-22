@@ -1,10 +1,11 @@
 # Template
 **********************************************************************************************************************************
-I. Description:
+# I. Description:
 Template for projects and packages.
 
 **********************************************************************************************************************************
-II. Structure:
+# II. Structure:
+
 The code is independent of hardware libraries. The project has been divided into two main parts:
 Project lib:
 - With header and source files.
@@ -12,7 +13,7 @@ Tests:
 - Uses the project library and the gtest and/or gmock libraries.
 
 **********************************************************************************************************************************
-III. Configuration:
+# III. Configuration:
 - Python 2.7.16,
 - CMake version 3.17.0-rc2,
 - Visual Studio 2019.
@@ -23,7 +24,7 @@ III. Configuration:
   - Packages = ["packageName/version@owner/channel", next package] -> ["Logger/1.0@ssitkowx/stable", "Utils/2.3@ssitkowx/testing"] 
 
 **********************************************************************************************************************************
-IV. Builidng:
+#IV. Builidng:
 - Go to 'Conan' folder and open git bash console
 - Type 'conan install .',
 - Type 'conan source .',
@@ -31,7 +32,7 @@ IV. Builidng:
 - Got to 'Build' folder and open Visual Project.
 
 **********************************************************************************************************************************
-V. Tips:
+#V. Tips:
 - It is unacceptable if the package calls the package (recursion),
 - The first time you start the program after entering 'conan install .' python packages can be missing. 
   Please follow the python suggestion to install them,
