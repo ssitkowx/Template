@@ -7,10 +7,8 @@ Template for projects and packages.
 # II. Structure:
 
 The code is independent of hardware libraries. The project has been divided into two main parts:
-Project lib:
-- With header and source files.
-Tests:
-- Uses the project library and the gtest and/or gmock libraries.
+- Project lib with header and source files,
+- Tests which uses the project library and the gtest and/or gmock libraries.
 
 **********************************************************************************************************************************
 # III. Configuration:
