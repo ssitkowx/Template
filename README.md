@@ -24,7 +24,7 @@ Tests:
   - Packages = ["packageName/version@owner/channel", next package] -> ["Logger/1.0@ssitkowx/stable", "Utils/2.3@ssitkowx/testing"] 
 
 **********************************************************************************************************************************
-#IV. Builidng:
+# IV. Builidng:
 - Go to 'Conan' folder and open git bash console
 - Type 'conan install .',
 - Type 'conan source .',
@@ -32,7 +32,7 @@ Tests:
 - Got to 'Build' folder and open Visual Project.
 
 **********************************************************************************************************************************
-#V. Tips:
+# V. Tips:
 - It is unacceptable if the package calls the package (recursion),
 - The first time you start the program after entering 'conan install .' python packages can be missing. 
   Please follow the python suggestion to install them,
