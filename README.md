@@ -29,9 +29,7 @@ The code is independent of hardware libraries. The project has been divided into
 - Type 'conan build .',
 - Got to 'Build' folder and open Visual Project.
 
-##################################################################################################################################
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+**********************************************************************************************************************************
 # V. Tips:
 - It is unacceptable if the package calls the package (recursion),
 - The first time you start the program after entering 'conan install .' python packages can be missing. 
