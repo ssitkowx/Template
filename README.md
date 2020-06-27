@@ -2,7 +2,7 @@
 # I. Description:
 Template for projects and packages.
 
-# II Assumption:
+# II. Assumption:
 - The code should be dependent only on C/C++ language libraries,
 - The code should work in various environments such as Linux, Windows, Embedded and be independent of them.
 
@@ -18,7 +18,7 @@ The solution project has been divided into three parts:
 - Visual Studio 2019,
 - GTest and GMock tooked from https://bintray.com/bincrafters/public-conan/gtest%3Abincrafters/1.8.1%3Astable#
 - You should update yours remote with 'conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan'
-- You should update yours conanfile.py as per the example below:
+- You should update yours conanfile.py according to the example below:
   - name     = "Template"                                          -> Display
   - Packages = ["packageName/version@owner/channel", next package] -> ["Logger/1.0@ssitkowx/stable", "Utils/2.3@ssitkowx/testing"] 
 
