@@ -1,6 +1,6 @@
-# Template
+# Display
 # I. Description:
-Template for projects and packages.
+General class for display.
 
 # II. Assumption:
 - The code should be dependent only on C/C++ language libraries,
