@@ -3,7 +3,7 @@ from ConanPackages import ConanPackages
 import os, re
 
 class Conan(ConanFile):
-    name            = "Display"
+    name            = "Template"
     version         = "1.0"
     user            = "ssitkowx"
     channel         = "stable"
@@ -18,7 +18,7 @@ class Conan(ConanFile):
     author          = "sylsit"
     exports         = "*"
     exports_sources = '../*'
-    requires        = []
+    requires        = ["gtest/1.8.1@bincrafters/stable"]
     DownloadsPath   = "C:/Users/sitko/.conan/download"
     PackagesPath    = "C:/Users/sitko/.conan/data"
     Packages        = []
