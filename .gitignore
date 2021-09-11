@@ -37,3 +37,8 @@
 /trunk/conan/conanbuildinfo.txt
 /build
 /Build
+Conan/conan.lock
+Conan/conanbuildinfo.cmake
+Conan/conanbuildinfo.txt
+Conan/conaninfo.txt
+Conan/graph_info.json
