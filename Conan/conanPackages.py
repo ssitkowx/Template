@@ -8,14 +8,14 @@ class conanPackages:
             os.mkdir (v_downloadsPath)
         os.chdir (v_downloadsPath)
 
-    def __cloneRepo (self, v_name, v_downloadsPath, v_repoUrl):
+    def __cloneRepo (self, v_name, v_version, v_downloadsPath, v_repoUrl):
         print ('cloneRepo')
         url = v_repoUrl + '/' + v_name + '.git'
         print ('url', url)
 
         packageDownloadsPath = v_downloadsPath + '/' + v_name
         if not os.path.isdir (packageDownloadsPath):
-            self.run ('git clone ' + url)
+            self.run ('git clone --branch ' + v_version + ' ' + url)
         os.chdir (packageDownloadsPath + '/Conan')
 
     def __createPackage (self, v_user, v_channel):
@@ -58,5 +58,5 @@ class conanPackages:
         for package in v_packages:
             packageComponent = conanPackages.__parse (self, package)
             conanPackages.__createFolderDownload     (self, v_downloadsPath)
-            conanPackages.__cloneRepo                (self, packageComponent ['name'], v_downloadsPath, v_repoUrl)
+            conanPackages.__cloneRepo                (self, packageComponent ['name'], packageComponent ['version'], v_downloadsPath, v_repoUrl)
             conanPackages.__createPackage            (self, packageComponent ['user'], packageComponent ['channel'])

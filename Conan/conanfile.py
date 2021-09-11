@@ -3,7 +3,7 @@ from conanPackages import conanPackages
 import os
 
 class Conan(ConanFile):
-    name            = "Test"
+    name            = "Template"
     version         = "1.0"
     user            = "ssitkowx"
     channel         = "stable"
