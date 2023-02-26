@@ -1,4 +1,4 @@
-PROJECT                (PackageTempName)
+PROJECT                (Template)
 CMAKE_MINIMUM_REQUIRED (VERSION 3.16)
 
 SET (ProjectName            Project)
@@ -6,7 +6,7 @@ SET (TestsName              Tests)
 SET (LibraryName            ${CMAKE_PROJECT_NAME}Lib)
 SET (CurrentPath            ${CMAKE_CURRENT_SOURCE_DIR})
 SET (PackagesPropertiesPath "")
-SET (PackagesNames          PackagesTempNames)
+SET (PackagesNames          )
 
 MACRO (LOG_ERROR msg)
     EXECUTE_PROCESS (COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --red --bold ${msg})
@@ -102,3 +102,4 @@ ADD_LIBRARY                (${LibraryName} STATIC             ${ProjectFilesAndF
 TARGET_INCLUDE_DIRECTORIES (${LibraryName} PUBLIC             ${ProjectPathsLists} ${PackageIncludesPaths})
 TARGET_LINK_LIBRARIES      (${LibraryName}                    ${CONAN_LIBS_GTEST})
 TARGET_COMPILE_FEATURES    (${LibraryName} PUBLIC cxx_std_17)
+ADD_DEFINITIONS            (-D_GLIBCXX_USE_CXX11_ABI=0)
