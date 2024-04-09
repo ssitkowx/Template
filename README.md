@@ -35,5 +35,5 @@ The solution project has been divided into three parts:
 
 # VI. Tips:
 When using with VCode:
-- Complete all stapes form point V,
+- Complete all steps form point V,
 - Open VCode and when he ask select the conan-release configuration.
