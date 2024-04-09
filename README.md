@@ -14,28 +14,26 @@ The code stored here is a generic code, which means:
 The solution project has been divided into three parts:
 - Project,
 - Project library,
-- Tests which uses the project, gtest and/or gmock libraries.
+- Tests which uses the project, GTest and/or GMock libraries.
 
 # IV. Configuration:
-- Python 3.8.10 with required packages,
-- Git 2.25.1
+- Python 3.1.6 with required packages,
+- Conan 2.2.2
+- Git 2.40.1
 - CMake 3.16.3
-- Visual Studio Code 1.60.0
-- GTest and GMock tooked from https://bintray.com/bincrafters/public-conan/gtest%3Abincrafters/1.8.1%3Astable#
+- Visual Studio Code 1.88.0
 - Conanfile.py should be updated according to the example below:
-  - name        = "Template"                                          -> Display
-  - Packages    = ["packageName/version@owner/channel", next package] -> ["Logger/1.0@ssitkowx/stable", "Utils/1.0@ssitkowx/testing"]
-  - description = "Template for projects and packages"                -> "General class for display"
+  - name        = "Template"                            -> Display
+  - Packages    = ["packageName/version", next package] -> ["Logger/1.0", "Utils/1.0"]
+  - description = "Template for projects and packages"  -> "General class for display"
 
 # V. Builidng:
 - Go to 'Conan' folder and open git bash console,
-- Type 'conan install .',
+- Type 'conan install . --build=gtest/cci.20210126',
 - Type 'conan source .',
-- Type 'conan build .',
-- Got to 'Build' folder and open project solution.
+- Type 'conan build .'
 
 # VI. Tips:
-- It is unacceptable if the package calls the package (recursion),
-- The first time you start the program after entering 'conan install .' python packages can be missing.
-  Please follow the python suggestion to install them,
-- To install gtest and gmock packages for specified options and settings type 'conan install . --build gtest'.
+When using with VCode:
+- Complete all stapes form point V,
+- Open VCode and when he ask select the conan-release configuration.
