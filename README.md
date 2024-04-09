@@ -17,10 +17,10 @@ The solution project has been divided into three parts:
 - Tests which uses the project, GTest and/or GMock libraries.
 
 # IV. Configuration:
-- Python 3.1.6 with required packages,
+- Python 3.11.6 with required packages,
 - Conan 2.2.2
 - Git 2.40.1
-- CMake 3.16.3
+- CMake 3.27.4
 - Visual Studio Code 1.88.0
 - Conanfile.py should be updated according to the example below:
   - name        = "Template"                            -> Display
