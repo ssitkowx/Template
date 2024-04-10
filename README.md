@@ -34,6 +34,7 @@ The solution project has been divided into three parts:
 - Type 'conan build .'
 
 # VI. Tips:
+- When making new changes to the package, delete the copy of the local repository (../Repos/"PackageName") and replace it with a new one
 When using with VCode:
 - Complete all steps form point V,
 - Open VCode and when he ask select the conan-release configuration.
